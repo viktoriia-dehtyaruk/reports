@@ -27,6 +27,7 @@
         <a class="lab-switcher">Лабораторна робота №3</a>
         <a class="lab-switcher">Лабораторна робота №4</a>
         <a class="lab-switcher">Лабораторна робота №5</a>
+        <a class="lab-switcher">Лабораторна робота №6</a>
     </div>
    </section>
    <section>
@@ -160,7 +161,7 @@
             </div>
             <div class="pointer-content">
                 <img src="img/figma.png" width="500px">
-                <p>використовується гумовийй тип макету, який адаптується під різні типи пристроїв.</p>
+                <p>використовується фіксований статичний тип макету тип макету, який адаптується під різні типи пристроїв.</p>
             </div>
             <div class="pointer-content">
                 <img src="img/variants.png" width="500px">
@@ -583,15 +584,19 @@
                 <p>Непарні номери завдань</p>
                 <img src="img/task1-lab5.png" width="400px">
                 <img src="img/task12-lab5.png" width="200px">
+                <p></p>
 
                 <img src="img/task2-lab5.png" width="400px">
                 <img src="img/tasl22-lab5.png" width="200px">
+                <p></p>
 
                 <img src="img/task3-lab5.png" width="400px">
                 <img src="img/task32-lab5.png" width="200px">
+                <p></p>
 
                 <img src="img/task4-lab5.png" width="400px">
                 <img src="img/task41-lab5.png" width="200px">
+                <p></p>
 
                 <img src="img/task5-lab5.png" width="400px">
                 <img src="img/task52-lab5.png" width="200px">
@@ -632,6 +637,212 @@
             </div>
             <div class="pointer-content">
                 <p>Отримала практичні навички роботи з масивами у js-сценаріях. Реалізація програм засобами мови JAVASCRIPT.</p>
+            </div>
+        </div>
+    </div>
+    <!-- 6 лаба -->
+    <div class="report-content">
+        <div class="poiner-switchers">
+            <a class="point-switch">Тема, Мета лаби №5.1</a>
+            <a class="inner-pointer point-switch">Виконання завдань 1, 3, 5, 7, 9, 10</a>
+            <a class="point-switch">Тема, Мета лаби №6</a>
+            <a class="inner-pointer point-switch">Виконання завдань</a>
+        </div>
+        <div class="pointer-content-wrapper">
+            <div class="pointer-content">
+                <p>Тема: ОБ'ЄКТ. МЕТОДИ ОБ'ЄКТА. МАСИВ ОБ'ЄКТІВ. ДЕСТРУКТУРИЗАЦІЯ ОБ'ЄКТІВ. CALLBACK. СТРІЛОЧНІ ФУНКЦІЇ. СТРІЛОЧНІ ФУНКЦІЇ ЯК КОЛБЕКИ​.</p>
+                <p>Мета: придбати практичні навички роботи з об'єктами. Методи об'єкта. Callback. Стрілочні функції. Стрілочні функції як колбеки​. Реалізація програм засобами мови JAVASCRIPT.</p>
+            </div>
+            <div class="pointer-content">
+                <p>Непарні номери завдань</p>
+                <p>Напишіть наступні функції:
+                    createProduct(obj, callback) - приймає об'єкт товару без id, а також коллбек. Функція створює об'єкт товару, додаючи йому унікальний ідентифікатор у властивість id та викликає коллбек передаючи йому створений об'єкт.
+                    logProduct(product) - колббек що приймає об'єкт продукту і логуючий його в консоль
+                    logTotalPrice(product) - колббек, що приймає об'єкт продукту і логіює загальну вартість товару в консоль
+                </p>
+                <pre>function createProduct(obj, callback) {
+                    // генеруємо унікальний ідентифікатор для продукту
+                    const uniqueId = Math.random().toString(36);
+                    // створюємо новий об'єкт продукту, з унікальним ідентифікатором
+                    const product = { ...obj, id: uniqueId };
+                    // викликаємо колбек функцію
+                    callback(product);
+                }
+                function logProduct(product) {
+                    console.log('Product:', product);
+                }
+                function logTotalPrice(product) {
+                    if (product.price && product.quantity) {
+                        const totalPrice = product.price * product.quantity;
+                        console.log('Total Price:', totalPrice);
+                    } else {
+                        console.log('Price or quantity is missing in the product object.');
+                    }
+                }
+                // створюємо і викликаємо функції
+                function createAndLogProduct() {
+                    const productDetails = getProductDetails();
+                    createProduct(productDetails, logProduct);
+                }
+                
+                function LogTotalPrice() {
+                    const productDetails = getProductDetails();
+                    createProduct(productDetails, logTotalPrice);
+                }</pre>
+                <img src="img/task11-lab5.1.png" width="400px">
+                <img src="img/task1-lab5.1.png" width="400px">
+                <p></p>
+
+                <p>З об'єкту medicines потрібно отримати масив  в якому будуть лише назви препаратів.
+                    З масиву  потрібно прибрати медикаменти, в яких строк зберігання  уже пройшов. У новому масиві відсортувати медикаменти  у хронологічному порядку.
+                    Результат вивести у консоль.
+                </p>
+                <pre>const filterMedicines = () => {
+                    // отримуємо поточну дату
+                    const currentDate = new Date();
+                
+                    // отримуємо масив з назвами препаратів та їх датами
+                    const medicinesArray = Object.entries(medicines);
+                    console.log("Initial Medicines:", medicinesArray);
+                
+                    // відфільтровуємо і сортуємо препарати, строк зберігання яких не пройшов
+                    const validMedicines = medicinesArray.filter(([name, expiryDate]) => expiryDate > currentDate);
+                    const sortedMedicines = validMedicines.sort(([, dateA], [, dateB]) => dateA - dateB);
+                
+                    const medicineNames = sortedMedicines.map(([name]) => name);
+                    console.log("Filtered and Sorted Medicines:", medicineNames);
+                };
+                </pre>
+                <img src="img/task3-lab5.1.png" width="400px">
+                <img src="img/result3-lab5.1.png" width="400px">
+                <p></p>
+
+                <p>Напишіть функцію, яка приймає массив об'єктів і повертає новий массив
+                    Зробіть знижку 20 % на всі фрукти у масиві
+                    Надайте ід для кожного продукту
+                </p>
+                <pre>function applyDiscountAndAddId(fruits) {
+                    const modifiedFruits = [];
+                    fruits.forEach((fruit, index) => {
+                        // нова ціна
+                        const discountedPrice = fruit.price * 0.8;
+                        // унікальний айді
+                        const id = "fruit" + (index + 1);
+                        // додаємо до масиву
+                        modifiedFruits.push({
+                            id: id,
+                            name: fruit.name,
+                            price: discountedPrice
+                        });
+                    });
+                    return modifiedFruits;
+                }</pre>
+                <img src="img/task5-lab5.1.png" width="400px">
+                <img src="img/result5-lab5.1.png" width="400px">
+                <p></p>
+
+                <p>Напиши клас Client який створює об'єкт з ​​властивостями login email
+                    Оголоси приватні властивості #login #email, доступ до яких зроби через геттер та сеттер login email
+                </p>
+                <pre>class Client {
+                    #login;
+                    #email;
+                    constructor(login, email) {
+                        this.#login = login;
+                        this.#email = email;
+                    }
+                    get login() {
+                        return this.#login;
+                    }
+                    set login(newLogin) {
+                        this.#login = newLogin;
+                    }
+                    get email() {
+                        return this.#email;
+                    }
+                    set email(newEmail) {
+                        this.#email = newEmail;
+                    }
+                }
+                // створюємо новий екземпляр класу Client
+                const client = new Client("example_login", "example@example.com");
+                // оновлення інформації про клієнта
+                function updateClient() {
+                    const newLogin = document.getElementById("loginInput").value;
+                    const newEmail = document.getElementById("emailInput").value;
+                    // встановлюємо нові значення для логіна та електронної пошти клієнта
+                    client.login = newLogin;
+                    client.email = newEmail;
+                    // оновлюємо відображення поточної інформації про клієнта
+                    document.getElementById("currentLogin").textContent = client.login;
+                    document.getElementById("currentEmail").textContent = client.email;
+                }
+                
+                // відображаємо початкові дані про клієнта
+                document.getElementById("currentLogin").textContent = client.login;
+                document.getElementById("currentEmail").textContent = client.email;
+                </pre>
+                <img src="img/task7-lab5.1.png" width="400px">
+                <img src="img/result7-lab5.1.png" width="300px">
+                <p></p>
+
+                <p>Поверніть об'єкт, в якому вказано кількість тегів.
+                    Очікуваний результат {js: 3, nodejs: 3, html: 2, css: 2, react: 2}
+                </p>
+                <pre>function displayTagCounts() {
+                    console.log("Tags:", tags_array);
+                    const tagCount = {};
+                
+                    // обчислюємо кількість тегів
+                    tags_array.forEach(tweet => {
+                        tweet.tags.forEach(tag => {
+                            tagCount[tag] = (tagCount[tag] || 0) + 1;
+                        });
+                    });
+                    console.log(tagCount);
+                };
+                </pre>
+                <img src="img/task9-lab5.1.png" width="400px">
+                <img src="img/result9-lab5.1.png" width="300px">
+
+                <p>Напишіть функцію checkBrackets(str) яка приймає рядок жс коду (someFn)  і перевіряє правильність закриття дужок () {} []
+                    Якщо рядок містить коректний код функція повертає true.
+                    В іншому випадку повертає false                  
+                </p>
+                <pre>function checkBrackets(str) {
+                    // для відкритих дужок
+                    const stack = [];
+                    const brackets = { '(': ')', '{': '}', '[': ']' };
+                
+                    for (let char of str) {
+                        // якщо символ відкриваюча дужка, то додаємо в масив
+                        if (brackets[char]) {
+                            stack.push(char);
+                            // якщо закривюча, то перевіряємо відповідність з останньою доданою до масиву дужкою
+                        } else if (Object.values(brackets).includes(char)) {
+                            if (brackets[stack.pop()] !== char) {
+                                return false;
+                            }
+                        }
+                    }
+                
+                    return stack.length === 0;
+                }
+                </pre>
+                <img src="img/task101-lab5.1.png" width="400px">
+                <img src="img/result101-lab5.1.png" width="400px">
+                <p></p>
+                <img src="img/task102-lab5.1.png" width="400px">
+                <img src="img/result102-lab5.1.png" width="400px">
+            </div>
+            
+            <div class="pointer-content">
+                <p>Тема: ОБ'ЄКТ. МЕТОДИ ОБ'ЄКТА. МАСИВ ОБ'ЄКТІВ. ДЕСТРУКТУРИЗАЦІЯ ОБ'ЄКТІВ. CALLBACK. СТРІЛОЧНІ ФУНКЦІЇ. СТРІЛОЧНІ ФУНКЦІЇ ЯК КОЛБЕКИ​.</p>
+                <p>Мета: придбати практичні навички роботи з об'єктами. Методи об'єкта. Callback. Стрілочні функції. Стрілочні функції як колбеки​. Реалізація програм засобами мови JAVASCRIPT.</p>
+            </div>
+            <div class="pointer-content">
+                <p>Тема: ОБ'ЄКТ. МЕТОДИ ОБ'ЄКТА. МАСИВ ОБ'ЄКТІВ. ДЕСТРУКТУРИЗАЦІЯ ОБ'ЄКТІВ. CALLBACK. СТРІЛОЧНІ ФУНКЦІЇ. СТРІЛОЧНІ ФУНКЦІЇ ЯК КОЛБЕКИ​.</p>
+                <p>Мета: придбати практичні навички роботи з об'єктами. Методи об'єкта. Callback. Стрілочні функції. Стрілочні функції як колбеки​. Реалізація програм засобами мови JAVASCRIPT.</p>
             </div>
         </div>
     </div>
